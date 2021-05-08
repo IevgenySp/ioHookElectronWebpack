@@ -1,0 +1,72 @@
+{
+  "name": "iohook-electron-webpack-integration",
+  "version": "0.0.1",
+  "description": "IoHook Electron Webpack integration",
+  "author": "Ievgenii Spitsyn",
+  "license": "MIT",
+  "keywords": [
+    "ioHook",
+    "Electron",
+    "WebPack"
+  ],
+  "main": "build/electron/main.js",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IevgenySp/ioHookElectronWebpack.git"
+  },
+  "build": {
+    "files": [
+      "build/**/*",
+      "package.json"
+    ]
+  },
+  "homepage": "./",
+  "scripts": {
+    "build:dev": "webpack --mode=development --config webpack.config.js",
+    "build:prod": "webpack --mode=production --config webpack.config.js",
+    "build:electron:dev": "webpack --mode=development --config webpack.electron.config.js",
+    "build:electron:prod": "webpack --mode=production --config webpack.electron.config.js",
+    "start": "npm run build:dev && npm run build:electron:dev && npx electron . --serve",
+    "dist": "npm run build:prod && npm run build:electron:prod && electron-builder build --dir"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "5.0.1",
+    "electron": "10.1.2",
+    "electron-builder": "22.8.1",
+    "electron-reload": "1.5.0",
+    "html-webpack-plugin": "^5.0.0-alpha.9",
+    "style-loader": "2.0.0",
+    "url-loader": "4.1.1",
+    "webpack": "5.10.0",
+    "webpack-cli": "4.2.0",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "electron-log": "^4.2.4",
+    "iohook": "0.9.0",
+    "os": "^0.1.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "iohook": {
+    "targets": [
+      "electron-82"
+    ],
+    "platforms": [
+      "win32",
+      "darwin",
+      "linux"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
+  }
+}
