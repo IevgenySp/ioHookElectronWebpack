@@ -2,7 +2,7 @@
 
 ![plot](assets/preview.png)
 
-####Installation steps:
+#### Installation steps:
 
 npm install
 
